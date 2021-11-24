@@ -1,9 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
 const port = 3000;
 const morgan = require('morgan');
+const router = require('./database/router');
 
 app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/api', router);
+
+app.get('/', (request, response) => {
+  response.status(200).send('Node.js Express, and Postgres API')
+})
 
 
 app.listen(port, () => {
