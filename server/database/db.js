@@ -1,5 +1,5 @@
 const Pool = require('pg').Pool;
-const {DB_USER, DB_DATABASE, DB_PASSWORD, DB_PORT, DB_HOST} = require('../../config');
+const {DB_USER, DB_DATABASE, DB_PASSWORD, DB_PORT, DB_HOST} = require('../config');
 
 const mydb = new Pool({
   user: DB_USER,
