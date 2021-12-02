@@ -4,25 +4,27 @@ services:
 
   backend:
     depends_on:
-      - db
+      - postgres_db
     build: ./server
     ports:
       - 3001:3001
     environment:
-      DB_URL: postgres://db/server
+      DB_URL: postgres://postgres_db:5432
+      DB_HOST: postgres_db
     volumes:
       - ./server:/app
 
-  db:
-    image: postgres:latest
+  postgres_db:
+    image: postgres
     environment:
       - POSTGRES_USER=nick
       - POSTGRES_PASSWORD=hawaiian5
       - POSTGRES_DB=products
     ports:
-      - "5432:5432"
+      - "3002:5432"
+    restart: always
     volumes:
-      - db-data:/var/lib/postgresql/db
+      - db-data:/var/lib/postgresql/data/
 
 volumes:
   db-data: null

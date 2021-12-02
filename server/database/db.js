@@ -9,6 +9,8 @@ const mydb = new Pool({
   port: DB_PORT,
 })
 
+console.log(DB_HOST)
+
 // mydb.query(`SELECT NOW()`, (err, res) => {
 //   if (err) {
 //     console.error(err)

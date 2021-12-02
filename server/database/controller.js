@@ -5,7 +5,7 @@ const controller = {
   products: {
     getProducts: (req, res) => {
       const queryString = `SELECT *
-                            FROM products.product
+                            FROM "products"."product"
                             LIMIT 20`
 
       mydb.query(queryString, (err, result) => {
@@ -21,7 +21,7 @@ const controller = {
     getProductById:  (req, res) => {
       const { id } = req.params;
       const queryString = `SELECT *
-                           FROM products.product
+                           FROM "products"."product"
                            WHERE
                            ${id} = products.product.id`;
       mydb.query(queryString, (err, result) => {
